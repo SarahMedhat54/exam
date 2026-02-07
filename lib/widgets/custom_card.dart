@@ -1,11 +1,9 @@
 import 'dart:ui';
-
 import 'package:exam_flutter/core/app_colors.dart';
 import 'package:exam_flutter/core/app_textstyle.dart';
 import 'package:exam_flutter/provider/item_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../model/item_model.dart';
 
 class CustomCard extends StatelessWidget {
@@ -16,7 +14,7 @@ class CustomCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      margin:  EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey.shade200),
@@ -47,7 +45,7 @@ class CustomCard extends StatelessWidget {
                 SizedBox(height: 5),
                 Text(
                   "EGP ${items.price}",
-                  style: const TextStyle(
+                  style:  TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
@@ -65,12 +63,12 @@ class CustomCard extends StatelessWidget {
               ),
               Row(
                 children: [
-                  const Icon(Icons.remove_circle_outline, size: 20),
-                  const Padding(
+                   Icon(Icons.remove, size: 20),
+                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8.0),
                     child: Text("1"),
                   ),
-                  const Icon(Icons.add_circle, color: Color(0xFF004AAD), size: 20),
+                   Icon(Icons.add_box, color: Color(0xFF004AAD), size: 20),
                 ],
               ),
             ],

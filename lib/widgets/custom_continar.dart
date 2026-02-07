@@ -23,7 +23,7 @@ class CustomContinar extends StatelessWidget {
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
             blurRadius: 5,
-            offset: const Offset(0, 2),
+            offset:  Offset(0, 2),
           ),
         ],
       ),
@@ -35,7 +35,7 @@ class CustomContinar extends StatelessWidget {
             width: double.infinity,
             margin: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: const Color(0xFFF2F2F2),
+              color:  Color(0xFFF2F2F2),
               borderRadius: BorderRadius.circular(12),
             ),
             child: ClipRRect(
@@ -55,22 +55,22 @@ class CustomContinar extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: AppTextstyle.black12,
                 ),
-                const SizedBox(height: 8),
+                 SizedBox(height: 8),
                 Row(
                   children: [
                     Icon(Icons.star, color: AppColors.yellow, size: 14),
-                    const SizedBox(width: 4),
+                     SizedBox(width: 4),
                     Text(items.rate, style: AppTextstyle.gray12),
                   ],
                 ),
-                const SizedBox(height: 8),
+                 SizedBox(height: 8),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
                       child: Text(
                         "${items.price.toStringAsFixed(2)} EGP",
-                        style: const TextStyle(
+                        style:  TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
@@ -82,7 +82,7 @@ class CustomContinar extends StatelessWidget {
                       Flexible(
                         child: FittedBox(
                           child: Container(
-                            margin: const EdgeInsets.only(left: 4),
+                            margin:  EdgeInsets.only(left: 4),
                             decoration: BoxDecoration(
                               color: AppColors.blue,
                               borderRadius: BorderRadius.circular(16),
@@ -91,18 +91,18 @@ class CustomContinar extends StatelessWidget {
                               children: [
                                 GestureDetector(
                                   onTap: () => provider.decrement(items),
-                                  child: const Padding(
+                                  child:  Padding(
                                     padding: EdgeInsets.all(4.0),
                                     child: Icon(Icons.remove, color: Colors.white, size: 16),
                                   ),
                                 ),
                                 Text(
                                   "${items.quantity}",
-                                  style: const TextStyle(color: Colors.white, fontSize: 12),
+                                  style:  TextStyle(color: Colors.white, fontSize: 12),
                                 ),
                                 GestureDetector(
                                   onTap: () => provider.count(items),
-                                  child: const Padding(
+                                  child:  Padding(
                                     padding: EdgeInsets.all(4.0),
                                     child: Icon(Icons.add, color: Colors.white, size: 16),
                                   ),
@@ -123,8 +123,8 @@ class CustomContinar extends StatelessWidget {
                         );
                       },
                       child: Container(
-                        margin: const EdgeInsets.only(left: 4),
-                        padding: const EdgeInsets.all(4),
+                        margin:  EdgeInsets.only(left: 4),
+                        padding:  EdgeInsets.all(4),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(color: AppColors.blue.withOpacity(0.3)),
@@ -137,7 +137,7 @@ class CustomContinar extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 8),
+                 SizedBox(height: 8),
               ],
             ),
           ),
