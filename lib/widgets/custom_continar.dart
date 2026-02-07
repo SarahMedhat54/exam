@@ -2,7 +2,11 @@ import 'package:exam_flutter/core/app_colors.dart';
 import 'package:exam_flutter/core/app_textstyle.dart';
 import 'package:exam_flutter/data/data_model.dart';
 import 'package:exam_flutter/model/item_model.dart';
+import 'package:exam_flutter/widgets/custom_bottomsheet.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/item_provider.dart';
 
 class CustomContinar extends StatelessWidget {
   final ItemModel items ;
@@ -47,7 +51,11 @@ class CustomContinar extends StatelessWidget {
             children: [
               Text("${items.price.toStringAsFixed(0)} EGP"),
               SizedBox(width: 5,),
-              IconButton(onPressed: (){}, icon: Icon(Icons.add , color: AppColors.blue,))
+              IconButton(onPressed: (){context.read<ItemProvider>().lastAddedItem = items;
+              context.read<ItemProvider>().addCart(items);
+              showModalBottomSheet(context: context, backgroundColor: Colors.transparent, builder: (context) => CustomBottomsheet(items: items),)
+
+                ;}, icon: Icon(Icons.add , color: AppColors.blue,))
             ],
           )
         ],

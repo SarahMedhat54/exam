@@ -1,3 +1,4 @@
+import 'package:exam_flutter/add_cart/add_card.dart';
 import 'package:exam_flutter/core/app_colors.dart';
 import 'package:exam_flutter/core/app_textstyle.dart';
 import 'package:exam_flutter/data/data_model.dart';
@@ -10,30 +11,28 @@ import '../model/item_model.dart';
 class CustomBottomsheet extends StatelessWidget {
   final ItemModel items ;
 
-  final String Name;
-  final VoidCallback onCart;
-  final VoidCallback onContinueShopping;
 
   const CustomBottomsheet({
     super.key,
-    required this.Name,
-    required this.onCart,
-    required this.onContinueShopping, required this.items,
+   required this.items,
   });
 
   @override
   Widget build(BuildContext context) {
-    final cart = context.read<ItemProvider>();
+    final lastItem = context.read<ItemProvider>().lastAddedItem;
     return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
+      //width: double.infinity,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          //Text(items)
+          Text(lastItem?.title ?? "NO",textAlign: TextAlign.center,style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+          SizedBox(height:12 ,),
+
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
@@ -42,23 +41,27 @@ class CustomBottomsheet extends StatelessWidget {
               Icon(Icons.check_circle, color: Colors.green, size: 22),
             ],
           ),
-          SizedBox(height: 10,),
-          ElevatedButton(
-               style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.blue,
-                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-              ),
-            onPressed: () {},
-            child: Text("View Card", style: TextStyle(color: AppColors.white)),
+          SizedBox(height: 15,),
+          Expanded(
+            child: ElevatedButton(
+                 style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.blue,
+                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                ),
+              onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => AddCard(),));},
+              child: Text("View Card", style: TextStyle(color: AppColors.white)),
+            ),
           ),
           SizedBox(height: 10,),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.white,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          Expanded(
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.white,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+              ),
+              onPressed:() => Navigator.pop(context),
+              child: Text("Continue Shopping", style: TextStyle(color: AppColors.blue)),
             ),
-            onPressed:() => Navigator.pop(context),
-            child: Text("continue shopping", style: TextStyle(color: AppColors.blue)),
           ),
 
         ],
