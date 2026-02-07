@@ -14,10 +14,12 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Image.asset("assets/images/logo.png"),
+          child: Image.asset("assets/images/logo.png" , width: 50, height: 50,),
         ),
         actions: [
           IconButton(
@@ -29,7 +31,7 @@ class Home extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Recommendations", style: AppTextstyle.lightBlack14),
+          Text("Recommendations", style: AppTextstyle.black6),
           SizedBox(height: 20),
           Expanded(
             child: Padding(

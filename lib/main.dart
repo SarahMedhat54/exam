@@ -1,9 +1,11 @@
 import 'package:exam_flutter/data/data_model.dart';
+import 'package:exam_flutter/provider/item_provider.dart';
 import 'package:exam_flutter/screens/home/home.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(create: (context) =>  ItemProvider(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -20,4 +22,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

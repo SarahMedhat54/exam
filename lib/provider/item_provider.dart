@@ -17,7 +17,25 @@ class ItemProvider extends ChangeNotifier {
 
   void addCart( ItemModel item)
   {
+    item.isSelected = true;
+    item.quantity = 1;
     selectItem.add(item) ;
+    notifyListeners();
+  }
+
+  void count(ItemModel item) {
+    item.quantity++;
+    notifyListeners();
+  }
+
+  void decrement(ItemModel item) {
+    if (item.quantity > 1) {
+      item.quantity--;
+    } else {
+      item.isSelected = false ;
+      item.quantity = 0;
+      selectItem.remove(item);
+    }
     notifyListeners();
   }
 

@@ -6,6 +6,8 @@ abstract  final class AppTextstyle {
   static const TextStyle  lightBlack14 = TextStyle(color: AppColors.lightBlack, fontSize:  14);
   static const TextStyle  black12 = TextStyle(color: AppColors.black, fontSize:  10);
   static const TextStyle  gray10 = TextStyle(color: AppColors.lightGray, fontSize:  8);
+  static const TextStyle  black6 = TextStyle(color: AppColors.black, fontSize:  16);
+
 
 
 }
