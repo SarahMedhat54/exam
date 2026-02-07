@@ -13,6 +13,7 @@ class AddCard extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
+        backgroundColor:  AppColors.white,
         leading: IconButton(onPressed: () => Navigator.pop(context), icon: Icon(Icons.arrow_back_ios_new,color:  AppColors.blue,)),
         title: Text(" My Cart", style: TextStyle(color: AppColors.black, fontSize: 14),),
         centerTitle: true,
@@ -33,7 +34,7 @@ class AddCard extends StatelessWidget {
                 ),
                 Text(
                   "EGP ${cartProvider.totalPrice}",
-                  style: TextStyle(fontSize: 18, color: AppColors.blue, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 14, color: AppColors.black, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -52,7 +53,7 @@ class AddCard extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.blue,
                 minimumSize: const Size(double.infinity, 50),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
               ),
               onPressed: () {},
               child: const Text("Checkout", style: TextStyle(color: Colors.white)),

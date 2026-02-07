@@ -42,7 +42,7 @@ class CustomCard extends StatelessWidget {
                   style: TextStyle(color: Colors.black, fontSize: 16),
                 ),
                 SizedBox(height: 5),
-                Text(items.title, style: AppTextstyle.gray10),
+                Text(items.title, style: AppTextstyle.gray12),
                 SizedBox(height: 5),
                 Text(
                   "EGP ${items.price}",

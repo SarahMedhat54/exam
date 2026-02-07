@@ -15,7 +15,7 @@ class CustomContinar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = context.watch()<ItemProvider>();
+    final provider = context.watch<ItemProvider>();
     return Container(
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -68,7 +68,7 @@ class CustomContinar extends StatelessWidget {
                         Text("${items.quantity}", style:  TextStyle(color:  Colors.white,),),
                     IconButton(constraints: const BoxConstraints(),
                         padding: EdgeInsets.zero,
-                        onPressed: () => provider.increment(items), icon: Icon(Icons.add,color: Colors.white,))
+                        onPressed: () => provider.count(items), icon: Icon(Icons.add,color: Colors.white,))
                   ],
                 ),
               ),

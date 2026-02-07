@@ -29,12 +29,14 @@ class CustomBottomsheet extends StatelessWidget {
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment:  CrossAxisAlignment.start,
+
         children: [
-          Text(lastItem?.title ?? "NO",textAlign: TextAlign.center,style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+          Text(lastItem?.title ?? "NO",textAlign: TextAlign.center,style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 14),),
           SizedBox(height:12 ,),
 
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: const [
               Text("Added to cart", style: TextStyle(color: Colors.grey, fontSize: 15)),
               SizedBox(width: 8),
@@ -42,26 +44,37 @@ class CustomBottomsheet extends StatelessWidget {
             ],
           ),
           SizedBox(height: 15,),
-          Expanded(
-            child: ElevatedButton(
-                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.blue,
-                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          Row(
+            children: [
+              Expanded(
+                child: ElevatedButton(
+                       style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.blue,
+                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                      ),
+                    onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => AddCard(),));},
+                    child: Text("View Card", style: TextStyle(color: AppColors.white)),
+
                 ),
-              onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => AddCard(),));},
-              child: Text("View Card", style: TextStyle(color: AppColors.white)),
-            ),
+              ),
+            ],
           ),
           SizedBox(height: 10,),
-          Expanded(
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.white,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          Row(
+            children: [
+              Expanded(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.white,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15) ,
+                    side: BorderSide(color: AppColors.blue),
+                    ),
+                  ),
+                  onPressed:() => Navigator.pop(context),
+                  child: Text("Continue Shopping", style: TextStyle(color: AppColors.blue)),
+                ),
               ),
-              onPressed:() => Navigator.pop(context),
-              child: Text("Continue Shopping", style: TextStyle(color: AppColors.blue)),
-            ),
+            ],
           ),
 
         ],
