@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:exam_flutter/core/app_colors.dart';
 import 'package:exam_flutter/core/app_textstyle.dart';
 import 'package:exam_flutter/provider/item_provider.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,7 @@ class CustomCard extends StatelessWidget {
             width: 70,
             height: 70,
             decoration: BoxDecoration(
-              color: Colors.grey[100],
+              color: AppColors.gray,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Image.asset(items.image),
@@ -47,7 +48,7 @@ class CustomCard extends StatelessWidget {
                 Text(
                   "EGP ${items.price}",
                   style: const TextStyle(
-                    color: Colors.blue,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

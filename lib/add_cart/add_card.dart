@@ -11,32 +11,66 @@ class AddCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final cartProvider = context.watch<ItemProvider>();
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: const Color(0xFFF8F8F8),
       appBar: AppBar(
-        backgroundColor:  AppColors.white,
-        leading: IconButton(onPressed: () => Navigator.pop(context), icon: Icon(Icons.arrow_back_ios_new,color:  AppColors.blue,)),
-        title: Text(" My Cart", style: TextStyle(color: AppColors.black, fontSize: 14),),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: Icon(Icons.arrow_back_ios_new, color: AppColors.blue, size: 20),
+        ),
+        title: Text(
+          "My Cart",
+          style: TextStyle(color: AppColors.black, fontSize: 16, fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
         actions: [
-          Icon(Icons.shopping_bag_sharp, color: AppColors.blue,),
+          Padding(
+            padding: const EdgeInsets.only(right: 16, top: 8),
+            child: Stack(
+              children: [
+                Icon(Icons.shopping_bag_outlined, color: AppColors.blue, size: 28),
+                Positioned(
+                  right: 0,
+                  child: CircleAvatar(
+                    radius: 8,
+                    backgroundColor: Colors.red,
+                    child: Text(
+                      "${cartProvider.select.length}",
+                      style: const TextStyle(fontSize: 10, color: Colors.white),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
         ],
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Container(
+            margin: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Column(
               children: [
-                const Text(
-                  "Total Amount",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "EGP ${cartProvider.totalPrice}",
-                  style: TextStyle(fontSize: 14, color: AppColors.black, fontWeight: FontWeight.bold),
-                ),
+                _buildSummaryRow("Items Total", "EGP ${cartProvider.totalPrice}", Colors.black),
+                const SizedBox(height: 12),
+                _buildSummaryRow("Shipping Fee", "Free", Colors.green),
+                const Divider(height: 30, thickness: 0.5),
+                _buildSummaryRow("Total", "EGP ${cartProvider.totalPrice}", const Color(0XFF2F2F2F), isBold: true),
               ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 20, bottom: 10),
+            child: Text(
+              "${cartProvider.select.length} Items",
+              style: const TextStyle(color: Colors.grey, fontWeight: FontWeight.w500),
             ),
           ),
           Expanded(
@@ -47,83 +81,24 @@ class AddCard extends StatelessWidget {
               },
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.blue,
-                minimumSize: const Size(double.infinity, 50),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-              ),
-              onPressed: () {},
-              child: const Text("Checkout", style: TextStyle(color: Colors.white)),
-            ),
-          )
         ],
       ),
-
-      // Container(
-      // margin: const EdgeInsets.all(16),
-      // padding: const EdgeInsets.all(16),
-      // decoration: BoxDecoration(
-      //   color: Colors.grey[50],
-      //   borderRadius: BorderRadius.circular(12),
-      // ),
-      // child: Row(
-      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //   children: [
-      //     const Text(
-      //       "Total Amount",
-      //       style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-      //     ),
-      //
-      //     Padding(
-      //       padding: EdgeInsets.all(16),
-      //       child: Row(
-      //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //         children: [
-      //           Text("Total", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-      //           Text("EGP ${cartProvider.totalPrice}", style: const TextStyle(fontSize: 18)),
-      //           Text(
-      //             "EGP ${cartProvider.totalPrice.toStringAsFixed(2)}",
-      //             style: TextStyle(
-      //               fontSize: 18,
-      //               fontWeight: FontWeight.bold,
-      //               color: AppColors.blue,
-      //             ),
-      //           ),
-      //         ],
-      //       ),
-      //     ),
-      //     Expanded(
-      //       child: ListView.builder(
-      //         itemCount: cartProvider.select.length,
-      //         padding: const EdgeInsets.symmetric(horizontal: 8),
-      //         itemBuilder: (context, index) {
-      //           return CustomCard(items: cartProvider.select[index]);
-      //         },
-      //       ),
-      //     ),
-      //     Padding(
-      //         padding: const EdgeInsets.all(16.0),
-      //         child: ElevatedButton(
-      //           style: ElevatedButton.styleFrom(
-      //             backgroundColor: AppColors.blue,
-      //             minimumSize: const Size(double.infinity, 55),
-      //             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      //           ),
-      //           onPressed: () {},
-      //           child: const Text(
-      //             "Checkout",
-      //             style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
-      //           ),
-      //         ),
-      //     ),
-      //   ],
-      // ),
-      //     ),
-      //   ],
-     // ),
+    );
+  }
+  Widget _buildSummaryRow(String label, String value, Color valColor, {bool isBold = false}) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(label, style: const TextStyle(color: Colors.grey, fontSize: 15)),
+        Text(
+          value,
+          style: TextStyle(
+            color: valColor,
+            fontWeight: isBold ? FontWeight.bold : FontWeight.w600,
+            fontSize: isBold ? 17 : 15,
+          ),
+        ),
+      ],
     );
   }
 }
